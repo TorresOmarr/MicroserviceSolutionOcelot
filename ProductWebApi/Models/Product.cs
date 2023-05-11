@@ -17,6 +17,6 @@ namespace ProductWebApi.Models
         public int ProductCode { get; set; }
         [Column("product_price")]
         public decimal ProductPrice { get; set; }
-        asdas
+    
     }
 }
