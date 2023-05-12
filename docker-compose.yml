@@ -14,6 +14,9 @@ services:
         - backend
     ports:
         - 8001:1433
+    volumes:
+        - C:/DockerVolumes/sqlserver:/var/opt/mssql/data
+
 
   customerwebapi:
     container_name: customer-api
@@ -29,6 +32,7 @@ services:
         - DB_HOST=customerdb
         - DB_NAME=dms_customer
         - DB_SA_PASSWORD=password@12345#
+   
     
   productdb: 
     container_name: product-db
@@ -39,6 +43,8 @@ services:
         - backend
     ports:
         - 8003:3306
+    volumes:
+        - C:/DockerVolumes/mysql:/var/lib/mysql
  
 
   productwebapi:
@@ -64,6 +70,8 @@ services:
        - 18005:27017  
     networks:
        - backend
+    volumes:
+      - C:/DockerVolumes/mongo:/data/db
 
   orderwebapi:
     container_name: order-api 
