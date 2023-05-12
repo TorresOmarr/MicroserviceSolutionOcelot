@@ -11,9 +11,9 @@ builder.Services.AddControllers();
 //Database Context Dependency Injection
 var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
 var dbName = Environment.GetEnvironmentVariable("DB_NAME");
-var dbPassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
-var connectionString = $"Data Source={dbHost};Initial Catalog={dbName}; User Id=sa; Password={dbPassword}";
-builder.Services.AddDbContext<ProductDbContext>(opt => opt.UseMySQL(connectionString));
+var dbPassword = Environment.GetEnvironmentVariable("DB_ROOT_PASSWORD");
+var connectionString = $"server={dbHost};port=3306;database={dbName};user=root;password={dbPassword}";
+builder.Services.AddDbContext<ProductDbContext>(o => o.UseMySQL(connectionString));
 // Configure the HTTP request pipeline.
 
 

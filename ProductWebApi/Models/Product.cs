@@ -14,7 +14,7 @@ namespace ProductWebApi.Models
         [Column("product_name")]
         public string ProductName { get; set; } = null!;
         [Column("product_cocd")]
-        public int ProductCode { get; set; }
+        public string ProductCode { get; set; } = null!;
         [Column("product_price")]
         public decimal ProductPrice { get; set; }
     
