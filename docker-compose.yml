@@ -17,7 +17,7 @@ services:
 
   customerwebapi:
     container_name: customer-api
-    image: ${DOCKER_REGISTRY-}customerwebapi
+    image: ${DOCKER_REGISTRY-}customer-api-net6.0
     build:
       context: .
       dockerfile: CustomerWebApi/Dockerfile
@@ -43,16 +43,39 @@ services:
 
   productwebapi:
     container_name: product-api
-    image: ${DOCKER_REGISTRY-}productwebapi
+    image: ${DOCKER_REGISTRY-}product-api-net6.0
     build:
       context: .
       dockerfile: ProductWebApi/Dockerfile
     networks:
-      - backend
+       - backend
     ports:
        - 8004:80 
     environment:
        - DB_HOST=productdb
        - DB_NAME=dms_product
        - DB_ROOT_PASSWORD=password@12345#
+
+    
+  orderdb:
+    container_name: order-db
+    image: mongo
+    ports: 
+       - 18005:27017  
+    networks:
+       - backend
+
+  orderwebapi:
+    container_name: order-api 
+    image: ${DOCKER_REGISTRY-}orderwebapi
+    build:
+      context: .
+      dockerfile: OrderWebApi/Dockerfile
+    ports:
+       - 18006:80
+    networks:
+       - backend
+    environment:
+        - DB_HOST=orderdb
+        - DB_NAME=dms_order
 
