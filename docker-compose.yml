@@ -28,7 +28,7 @@ services:
     environment:
         - DB_HOST=customerdb
         - DB_NAME=dms_customer
-        - DB_ROOT_PASSWORD=password@12345#
+        - DB_SA_PASSWORD=password@12345#
     
   productdb: 
     container_name: product-db
