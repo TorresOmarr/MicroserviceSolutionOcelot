@@ -8,9 +8,9 @@ namespace OrderWebApi.Models
     {
         [BsonId, BsonElement("_id"), BsonRepresentation(BsonType.ObjectId)]
         public string OrderId { get; set; } = null!;
-        [BsonElement("customer_id"), BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("customer_id"), BsonRepresentation(BsonType.Int32)]
         public int CustomerId { get; set; }
-        [BsonElement("ordered_on"), BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("ordered_on"), BsonRepresentation(BsonType.DateTime)]
         public DateTime OrderedOn { get; set; }
         [BsonElement("order_details")]
         public List<OrderDetail> OrderDetails { get; set; }  

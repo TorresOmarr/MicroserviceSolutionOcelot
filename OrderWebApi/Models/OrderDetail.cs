@@ -7,9 +7,9 @@ namespace OrderWebApi.Models
     {
         [BsonElement("product_id"), BsonRepresentation(BsonType.ObjectId)]
         public int ProductId { get; set; }
-        [BsonElement("quantity"), BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("quantity"), BsonRepresentation(BsonType.Decimal128)]
         public decimal Quantity { get; set; }
-        [BsonElement("unit_price"), BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("unit_price"), BsonRepresentation(BsonType.Decimal128)]
         public decimal UnitPrice { get; set; }
     }
 }

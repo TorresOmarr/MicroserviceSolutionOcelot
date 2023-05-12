@@ -7,10 +7,10 @@ namespace OrderWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrderControlller : ControllerBase
+    public class OrderController : ControllerBase
     {
         private readonly IMongoCollection<Order> _orderCollection;
-        public OrderControlller()
+        public OrderController()
         {
             var dbHost = "localhost";
             var dbName = "dms_order";
