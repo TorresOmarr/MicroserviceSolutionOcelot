@@ -1,5 +1,4 @@
-﻿using MySqlX.XDevAPI;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProductWebApi.Models
