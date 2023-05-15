@@ -20,14 +20,12 @@ services:
 
   customerwebapi:
     container_name: customer-api
-    image: ${DOCKER_REGISTRY-}customer-api-net6.0
+    image: ${DOCKER_REGISTRY-}customer-api
     build:
       context: .
       dockerfile: CustomerWebApi/Dockerfile
     networks:
         - backend
-    ports:
-        - 8082:80
     environment:
         - DB_HOST=customerdb
         - DB_NAME=dms_customer
@@ -49,14 +47,12 @@ services:
 
   productwebapi:
     container_name: product-api
-    image: ${DOCKER_REGISTRY-}product-api-net6.0
+    image: ${DOCKER_REGISTRY-}product-api
     build:
       context: .
       dockerfile: ProductWebApi/Dockerfile
     networks:
        - backend
-    ports:
-       - 8004:80 
     environment:
        - DB_HOST=productdb
        - DB_NAME=dms_product
@@ -79,11 +75,21 @@ services:
     build:
       context: .
       dockerfile: OrderWebApi/Dockerfile
-    ports:
-       - 18006:80
     networks:
        - backend
     environment:
         - DB_HOST=orderdb
         - DB_NAME=dms_order
+
+
+  apigateway:
+    container_name: api-gateway
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    ports:
+        - 8005:80 
+    networks:
+        - backend 
 
